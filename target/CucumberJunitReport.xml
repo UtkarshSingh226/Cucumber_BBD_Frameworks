@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="71.045" tests="6" skipped="0" failures="0" errors="0">
+<testcase classname="Amazon HomePage and LoginPage" name="Login as a valid user for Product Search" time="17.338">
+<system-out><![CDATA[
+Given browser is open.......................................................passed
+Given User navigates to the Amazon homepage with the URL "https://www.amazon.in/".passed
+When User clicks on SignIn..................................................passed
+And User enters email "UtkarshSingh0126932@gmail.com".......................passed
+And User clicks on Continue.................................................passed
+And User enters password "test@26932".......................................passed
+Then User is navigated to Amazon Home Page..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Amazon HomePage and LoginPage" name="Search for a product on Amazon - Example #1.1" time="10.79">
+<system-out><![CDATA[
+Given browser is open.......................................................passed
+And User is on the Amazon home page.........................................passed
+And User searches for BasketBall............................................passed
+Then User should see search results for BasketBall..........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Amazon HomePage and LoginPage" name="Search for a product on Amazon - Example #1.2" time="8.872">
+<system-out><![CDATA[
+Given browser is open.......................................................passed
+And User is on the Amazon home page.........................................passed
+And User searches for Laptop................................................passed
+Then User should see search results for Laptop..............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Amazon HomePage and LoginPage" name="Search for a product on Amazon - Example #1.3" time="8.955">
+<system-out><![CDATA[
+Given browser is open.......................................................passed
+And User is on the Amazon home page.........................................passed
+And User searches for PowerBank.............................................passed
+Then User should see search results for PowerBank...........................passed
+]]></system-out>
+</testcase>
+<testcase classname="Amazon MiniTv Page and AddToCart Page" name="Navigating to Amazon MiniTv Page" time="11.774">
+<system-out><![CDATA[
+Given now Chrome is Open....................................................passed
+Given user navigates to Amazon homepage with URL "https://www.amazon.in/"...passed
+When user clicks on Amazon MiniTv tab.......................................passed
+Then user navigates to Amazon MiniTv........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Amazon MiniTv Page and AddToCart Page" name="Adding Item to Amazon Cart Page" time="13.036">
+<system-out><![CDATA[
+Given now Chrome is Open....................................................passed
+Given user navigates to Amazon homepage with URL "https://www.amazon.in/"...passed
+When user search for the productName "Iphone 15"............................passed
+And user click on add to cart...............................................passed
+And product is sucessfully added............................................passed
+Then user navigated to amazon cart..........................................passed
+]]></system-out>
+</testcase>
+</testsuite>
