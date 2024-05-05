@@ -1,37 +1,46 @@
-node {
-    // Define stages
-    stage('Build') {
-        steps {
-            // Build the application
-            sh 'mvn clean install'
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Checkout the source code from your Git repository
+                git 'https://github.com/UtkarshSingh226/Cucumber_BBD_Frameworks.git'
+                
+                // Build the Maven project
+                sh 'mvn clean package'
+            }
         }
-    }
-    
-    stage('Test') {
-        steps {
-            // Run tests
-            sh 'mvn test'
+        
+        stage('Test') {
+            steps {
+                // Run Maven tests
+                sh 'mvn test'
+            }
         }
-        post {
-            // Handle test failure
-            failure {
-                echo 'Tests failed! Failing the build.'
-                currentBuild.result = 'FAILED'
+        
+        stage('Deploy') {
+            steps {
+                // Deploy the application (example: copying files to a remote server)
+                // Replace 'user', 'example.com', and '/path/to/deployment' with your server details
+                sh 'scp target/my-app.war user@example.com:/path/to/deployment'
+            }
+        }
+        
+        stage('Clean Up') {
+            steps {
+                // Clean up any temporary files or resources
+                sh 'mvn clean'
             }
         }
     }
     
-    stage('Deploy') {
-        steps {
-            // Deploy the application 
-            sh 'scp target/my-app.war nagarro\utkarshsingh01@IN-B10D5S3:/var/www/html'
+    post {
+        success {
+            echo 'Pipeline succeeded! Application deployed successfully.'
         }
-    }
-    
-    stage('Cleanup') {
-        steps {
-            // Clean up temporary files or resources
-            sh 'rm -rf target'
+        failure {
+            echo 'Pipeline failed! Deployment unsuccessful.'
         }
     }
 }
