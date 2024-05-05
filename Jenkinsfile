@@ -19,14 +19,6 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
-            steps {
-                // Deploy the application (example: copying files to a remote server)
-                // Replace 'user', 'example.com', and '/path/to/deployment' with your server details
-                sh 'scp target/my-app.war user@example.com:/path/to/deployment'
-            }
-        }
-        
         stage('Clean Up') {
             steps {
                 // Clean up any temporary files or resources
