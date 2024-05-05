@@ -18,14 +18,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        
-        stage('Clean Up') {
-            steps {
-                // Clean up any temporary files or resources
-                sh 'mvn clean'
-            }
-        }
-    }
     
     post {
         success {
