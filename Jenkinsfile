@@ -24,7 +24,7 @@ node {
     stage('Deploy') {
         steps {
             // Deploy the application 
-            sh 'scp target/my-app.war IN-B10D5S3@nagarro\utkarshsingh01:/var/www/html'
+            sh 'scp target/my-app.war nagarro\utkarshsingh01@IN-B10D5S3:/var/www/html'
         }
     }
     
