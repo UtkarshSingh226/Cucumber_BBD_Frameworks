@@ -1,30 +1,35 @@
-pipeline {
+pipeline{
     agent any
+        tools{
+    maven 'Maven'
+    }
+    triggers{
+        cron('H H(8-15)/2 * * 1-5')
+    }
 
     stages {
-        stage('Build') {
+
+
+        stage('Code Build') {
             steps {
-                // Checkout the source code from your Git repository
-                git 'https://github.com/UtkarshSingh226/Cucumber_BBD_Frameworks.git'
-                
-                // Build the Maven project
-                sh 'mvn clean package'
+                bat 'mvn clean'
             }
         }
-        
-        stage('Test') {
+
+        stage('Unit Test') {
             steps {
-                // Run Maven tests
-                sh 'mvn test'
+
+            script {
+            try {
+                bat 'mvn test'
             }
-        }
-    
-    post {
-        success {
-            echo 'Pipeline succeeded! Application deployed successfully.'
-        }
-        failure {
-            echo 'Pipeline failed! Deployment unsuccessful.'
+            catch (e) {
+                unstable(' Testing failed! ')
+
+                echo "Tests got failed"
+            }
+            }
+            }
         }
     }
 }
