@@ -25,8 +25,6 @@ pipeline {
                         unstable(' Testing failed! ') // Sets the build status to unstable if tests fail
                         echo "Tests got failed" // Outputs a message indicating test failure
                     } finally {
-                        // Publish Cucumber HTML report
-                        publishHTML(target: [reportDir: 'target', reportFiles: 'CucumberReport.html'])
                         // Archive HTML report as a build artifact
                         archiveArtifacts(artifacts: 'target/CucumberReport.html', onlyIfSuccessful: false)
                     }
